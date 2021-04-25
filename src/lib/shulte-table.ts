@@ -3,7 +3,7 @@ class ShulteTable {
   numbersAmount: number;
   shulteTable: number[][] = [];
 
-  constructor(dimension: number) {
+  private constructor(dimension: number) {
     this.dimension = dimension;
     this.numbersAmount = this.dimension ** 2;
   }
@@ -30,7 +30,7 @@ class ShulteTable {
     return randomOrderNumbers;
   }
 
-  generate(): void {
+  private generate(): void {
     const numbers = this.makeNumbersArray();
     const randomOrderNumbers = this.tossNumbersInRandomOrder(numbers);
 
@@ -41,6 +41,14 @@ class ShulteTable {
       randomOrderNumbers.splice(0, this.dimension);
     }
   }
+
+  static generate(dimension: number) {
+    const shulteTable = new ShulteTable(dimension);
+    shulteTable.generate();
+    return shulteTable;
+  }
 }
 
-export default ShulteTable;
+export {
+  ShulteTable,
+};
