@@ -1,32 +1,16 @@
 import React, { Component } from 'react';
 
-import ShulteTable from '../../lib/shulte-table';
+import TableBoard from '../table-board';
 
 import { INITIAL_DIMENSION } from '../../lib/constants';
 
 import style from './style.scss';
 
-interface IAppState {
-  shulteTable: ShulteTable,
-}
-
-class App extends Component<unknown, IAppState> {
-  constructor(props: unknown) {
-    super(props);
-
-    const shulteTable = new ShulteTable(INITIAL_DIMENSION);
-    shulteTable.generate();
-
-    this.state = {
-      shulteTable,
-    };
-  }
-
+class App extends Component<unknown, unknown> {
   render(): JSX.Element {
-    const { shulteTable } = this.state;
-
     return (
       <div id="layout" className={style.layout}>
+        <TableBoard dimension={INITIAL_DIMENSION} />
       </div>
     );
   }

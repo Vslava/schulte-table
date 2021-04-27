@@ -1,0 +1,5 @@
+const INITIAL_DIMENSION = 5;
+
+export {
+  INITIAL_DIMENSION,
+};
