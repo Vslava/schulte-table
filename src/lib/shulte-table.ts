@@ -1,7 +1,31 @@
+class Cell {
+  private _value: number;
+
+  constructor(value: number) {
+    this._value = value;
+  }
+
+  get value() {
+    return this._value;
+  }
+}
+
+class Row {
+  private _cells: Cell[];
+
+  constructor(values: number[]) {
+    this._cells = values.map((v) => new Cell(v));
+  }
+
+  get cells() {
+    return this._cells;
+  }
+}
+
 class ShulteTable {
-  dimension: number;
-  numbersAmount: number;
-  shulteTable: number[][] = [];
+  private dimension: number;
+  private numbersAmount: number;
+  private _rows: Row[] = [];
 
   private constructor(dimension: number) {
     this.dimension = dimension;
@@ -34,12 +58,18 @@ class ShulteTable {
     const numbers = this.makeNumbersArray();
     const randomOrderNumbers = this.tossNumbersInRandomOrder(numbers);
 
-    this.shulteTable = [];
+    this._rows = [];
 
     for (let i = 0; i < this.dimension; i++) {
-      this.shulteTable.push(randomOrderNumbers.slice(0, this.dimension));
+      const row = new Row(randomOrderNumbers.slice(0, this.dimension));
       randomOrderNumbers.splice(0, this.dimension);
+
+      this._rows.push(row);
     }
+  }
+
+  get rows() {
+    return this._rows as ReadonlyArray<Row>;
   }
 
   static generate(dimension: number) {
