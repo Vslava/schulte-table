@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import { ShulteTable } from '../../lib/shulte-table';
+import TableCell from '../table-cell';
 
 import style from './style.scss';
 
@@ -22,7 +23,7 @@ class TableBoard extends Component<ITableBoardProps, unknown> {
   render(): JSX.Element {
     const boardHTML = this.shulteTable.rows.map((row) => {
       const rowHTML = row.cells.map((cell) => (
-        <div className={style.cell}>{cell.value}</div>
+        <TableCell className={style.cell} value={cell.value}/>
       ));
 
       return <div className={style.row}>{rowHTML}</div>;

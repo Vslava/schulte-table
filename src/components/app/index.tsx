@@ -5,7 +5,6 @@ import TableBoard from '../table-board';
 import { INITIAL_DIMENSION } from '../../lib/constants';
 
 import style from './style.scss';
-
 class App extends Component<unknown, unknown> {
   render(): JSX.Element {
     return (

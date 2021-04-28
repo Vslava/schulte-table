@@ -12,19 +12,6 @@
   margin-top: -1px;
 }
 
-.cell {
-  display: inline-block;
-  line-height: 100px;
-  width: 100px;
-  border: 1px solid black;
-  text-align: center;
-  font-size: 30px;
-}
-
 .cell:not(:first-child) {
   margin-left: -1px;
-}
-
-.cell:hover {
-  background-color: #eee;
 }
