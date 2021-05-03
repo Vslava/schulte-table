@@ -20,14 +20,18 @@ class TableBoard extends Component<ITableBoardProps, unknown> {
     );
   }
 
-  render(): JSX.Element {
-    const boardHTML = this.shulteTable.rows.map((row) => {
+  makeBoardHTML = () => (
+    this.shulteTable.rows.map((row) => {
       const rowHTML = row.cells.map((cell) => (
         <TableCell className={style.cell} value={cell.value}/>
       ));
 
       return <div className={style.row}>{rowHTML}</div>;
-    });
+    })
+  );
+
+  render(): JSX.Element {
+    const boardHTML = this.makeBoardHTML();
 
     return <div className={style.board}>{boardHTML}</div>
   }
