@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { ShulteTable } from '../../lib/shulte-table';
 import { CurrentNumberTracker } from '../../lib/current-number-track';
 
-import TableCell from '../table-cell';
+import { TableCell } from '../table-cell';
 
 import style from './style.scss';
 
@@ -11,7 +11,7 @@ interface ITableBoardProps {
   dimension: number;
 }
 
-class TableBoard extends Component<ITableBoardProps, unknown> {
+export class TableBoard extends Component<ITableBoardProps, unknown> {
   private shulteTable: ShulteTable;
   private currentNumberTracker;
 
@@ -56,5 +56,3 @@ class TableBoard extends Component<ITableBoardProps, unknown> {
     return <div className={style.board}>{boardHTML}</div>
   }
 }
-
-export default TableBoard;

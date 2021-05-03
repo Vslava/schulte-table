@@ -12,7 +12,7 @@ interface ITableCellState {
   checked: boolean;
 }
 
-class TableCell extends Component<ITableCellProps, ITableCellState> {
+export class TableCell extends Component<ITableCellProps, ITableCellState> {
   constructor(props: ITableCellProps) {
     super(props);
 
@@ -50,5 +50,3 @@ class TableCell extends Component<ITableCellProps, ITableCellState> {
     );
   }
 }
-
-export default TableCell;

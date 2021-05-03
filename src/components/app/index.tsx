@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 
-import TableBoard from '../table-board';
+import { TableBoard } from '../table-board';
 
 import { INITIAL_DIMENSION } from '../../lib/constants';
 
 import style from './style.scss';
-class App extends Component<unknown, unknown> {
+
+export class App extends Component<unknown, unknown> {
   render(): JSX.Element {
     return (
       <div id="layout" className={style.layout}>
@@ -14,5 +15,3 @@ class App extends Component<unknown, unknown> {
     );
   }
 }
-
-export default App;
