@@ -5,6 +5,7 @@ import style from './style.scss';
 interface ITableCellProps {
   value: number;
   className?: string;
+  onClick?: (clickedNumber: number) => boolean;
 }
 
 interface ITableCellState {
@@ -25,9 +26,11 @@ class TableCell extends Component<ITableCellProps, ITableCellState> {
   }
 
   private handleClick = () => {
-    this.setState({
-      checked: true,
-    });
+    if (this.props.onClick && this.props.onClick(this.props.value)) {
+      this.setState({
+        checked: true,
+      });
+    }
   }
 
   render(): JSX.Element {
