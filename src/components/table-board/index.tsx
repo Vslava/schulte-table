@@ -9,6 +9,7 @@ import style from './style.scss';
 
 interface ITableBoardProps {
   dimension: number;
+  onLastCellClick?: () => void;
 }
 
 export class TableBoard extends Component<ITableBoardProps, unknown> {
@@ -18,7 +19,10 @@ export class TableBoard extends Component<ITableBoardProps, unknown> {
   constructor(props: ITableBoardProps) {
     super(props);
 
-    this.currentNumberTracker = new CurrentNumberTracker();
+    this.currentNumberTracker = new CurrentNumberTracker(
+      props.dimension
+    );
+
     this.shulteTable = ShulteTable.generate(
       props.dimension,
     );
@@ -26,11 +30,16 @@ export class TableBoard extends Component<ITableBoardProps, unknown> {
 
   handleCellClick = (clickedNumber: number): boolean => {
     const isCellForCurrentNumber = (
-      clickedNumber === this.currentNumberTracker.nextNumber
+      clickedNumber === this.currentNumberTracker.currentNumber
     );
 
     if (isCellForCurrentNumber) {
-      this.currentNumberTracker.increaseCurrentNumber();
+      if (this.props.onLastCellClick && this.currentNumberTracker.isCurrentNumberLast) {
+        // it must be invoked before increasing
+        this.props.onLastCellClick();
+      }
+
+      this.currentNumberTracker.goToNextNumber();
     }
 
     return isCellForCurrentNumber;
