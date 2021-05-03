@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
 
 import style from './style.scss';
 
@@ -34,17 +35,14 @@ export class TableCell extends Component<ITableCellProps, ITableCellState> {
   }
 
   render(): JSX.Element {
-    const classes = [
+    const classNames = classnames(
       this.className,
       style.cell,
-    ];
-
-    if (this.state.checked) {
-      classes.push(style.cell_checked);
-    }
+      { [style.cell_checked]: this.state.checked },
+    );
 
     return (
-      <div className={classes.join(' ')} onClick={this.handleClick}>
+      <div className={classNames} onClick={this.handleClick}>
         {this.props.value}
       </div>
     );

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
 
 import { TableBoard } from '../table-board';
 import { Notification } from '../notification';
@@ -27,13 +28,22 @@ export class App extends Component<unknown, IAppState> {
   }
 
   render(): JSX.Element {
+    const notificationClasses = classnames(
+      style.element,
+      style.notification,
+    );
+
     return (
       <div className={style.layout}>
         <div className={style.elements}>
           {this.state.isFinished && (
-            <Notification message='!!! DONE. THANK YOU !!!' />
+            <Notification
+              className={notificationClasses}
+              message='!!! DONE. THANK YOU !!!'
+            />
           )}
           <TableBoard
+            className={style.element}
             dimension={INITIAL_DIMENSION}
             onLastCellClick={this.handleLastCellClick}
           />

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
 
 import { ShulteTable } from '../../lib/shulte-table';
 import { CurrentNumberTracker } from '../../lib/current-number-track';
@@ -10,6 +11,7 @@ import style from './style.scss';
 interface ITableBoardProps {
   dimension: number;
   onLastCellClick?: () => void;
+  className?: string;
 }
 
 export class TableBoard extends Component<ITableBoardProps, unknown> {
@@ -60,8 +62,13 @@ export class TableBoard extends Component<ITableBoardProps, unknown> {
   );
 
   render(): JSX.Element {
+    const classNames = classnames(
+      this.props.className,
+      style.board,
+    );
+
     const boardHTML = this.makeBoardHTML();
 
-    return <div className={style.board}>{boardHTML}</div>
+    return <div className={classNames}>{boardHTML}</div>
   }
 }
